@@ -9,16 +9,21 @@ public class Controls : MonoBehaviour {
     public float rotateSpeed = 0.1f;
     public float pitchSpeed = 0.0f;
     public float VolumeSpeed;
+    public Countdown count;
 
     // Use this for initialization
     void Start() {
         audio = GetComponent<AudioSource>();
+        count = GameObject.Find("CutsceneManager").GetComponent<Countdown>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (count.canStart == true)
+        {
+            Movement();
+        }
 
         if(pitchSpeed > 1.1f)
         {

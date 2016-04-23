@@ -71,7 +71,7 @@ public class TextScript : MonoBehaviour {
         void Update ()
     {
         PersonsPlace();
-        lapCount.text = ("Lap: " + playerCol.LapNumber);
+        lapCount.text = ("Lap: " + playerCol.LapNumber + "/3");
         Speed.text = ("" + Mathf.Round((player.speed * 2.2f)) + " KM/H");
         place.text = ("" + placement);
 	}

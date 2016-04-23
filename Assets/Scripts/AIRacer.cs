@@ -15,6 +15,7 @@ public class AIRacer : MonoBehaviour
     public float speed = 0.1f;
     public NavMeshAgent navmesh;
     public int LapNumber = 0;
+    public Countdown count;
 
     // Use this for initialization
     void Start()
@@ -23,24 +24,34 @@ public class AIRacer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         currentWaypointPos = waypoints[currentWaypoint].position;
         navmesh = GetComponent<NavMeshAgent>();
+        count = GameObject.Find("CutsceneManager").GetComponent<Countdown>();
     }
     void Update()
     {
-        NavigateTowardsWaypoint();
-        if (speed >= 25)
+        if (count.canStart == true)
         {
-            speed = 25;
-        }
-        else if (speed < 0)
-        {
-            speed = 0;
-        }
-        if (currentWaypoint == waypoints.Count)
-        {
-            currentWaypoint = 0;
-            navmesh.SetDestination(waypoints[0].position);
-            currentWaypointPos = new Vector3(waypoints[0].position.x + Random.Range(-5, 5), waypoints[0].position.y, waypoints[0].position.z + Random.Range(-5, 5));
+            navmesh.speed = 3.5f;
+            NavigateTowardsWaypoint();
+            if (speed >= 25)
+            {
+                speed = 25;
+            }
+            else if (speed < 0)
+            {
+                speed = 0;
+            }
+            if (currentWaypoint == waypoints.Count)
+            {
+                currentWaypoint = 0;
+                navmesh.SetDestination(waypoints[0].position);
+                currentWaypointPos = new Vector3(waypoints[0].position.x + Random.Range(-5, 5), waypoints[0].position.y, waypoints[0].position.z + Random.Range(-5, 5));
 
+            }
+        }
+        else
+        {
+            //navmesh.SetDestination(transform.position);
+            navmesh.speed = 0;
         }
 
     }
