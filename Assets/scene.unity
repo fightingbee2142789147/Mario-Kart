@@ -1418,6 +1418,8 @@ MonoBehaviour:
   pitchSpeed: 0
   VolumeSpeed: 0
   count: {fileID: 0}
+  Text1: {fileID: 0}
+  Text2: {fileID: 0}
 --- !u!114 &730048434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,6 +2008,8 @@ MonoBehaviour:
   pitchSpeed: 0
   VolumeSpeed: 0
   count: {fileID: 0}
+  Text1: {fileID: 1119471450}
+  Text2: {fileID: 1709267513}
 --- !u!82 &1022580681
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class Controls : MonoBehaviour {
     public float pitchSpeed = 0.0f;
     public float VolumeSpeed;
     public Countdown count;
+    public GameObject Text1;
+    public GameObject Text2;
 
     // Use this for initialization
     void Start() {
@@ -23,6 +25,8 @@ public class Controls : MonoBehaviour {
         if (count.canStart == true)
         {
             Movement();
+            Text1.SetActive(true);
+            Text2.SetActive(true);
         }
 
         if(pitchSpeed > 1.1f)
