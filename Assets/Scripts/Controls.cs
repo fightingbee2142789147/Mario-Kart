@@ -13,15 +13,17 @@ public class Controls : MonoBehaviour {
     public GameObject Text1;
     public GameObject Text2;
 
+
     // Use this for initialization
     void Start() {
         audio = GetComponent<AudioSource>();
         count = GameObject.Find("CutsceneManager").GetComponent<Countdown>();
     }
-
+   
     // Update is called once per frame
     void Update()
     {
+        
         if (count.canStart == true)
         {
             Movement();
@@ -114,6 +116,7 @@ public class Controls : MonoBehaviour {
         }
 
     }
+   
 }
         
 
