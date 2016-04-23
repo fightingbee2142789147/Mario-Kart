@@ -22,7 +22,10 @@ public class CameraScript : MonoBehaviour
     void LateUpdate()
     {
         // Early out if we don't have a target
-       
+        if (!Input.GetKey(KeyCode.C))
+        {
+            rotationDamping = control.rotateSpeed + 6;
+        }
         // Calculate the current rotation angles
         float wantedRotationAngle = target.eulerAngles.y;
         float wantedHeight = target.position.y + height;
@@ -49,10 +52,7 @@ public class CameraScript : MonoBehaviour
 
         // Always look at the target
         transform.LookAt(target);
-        if (!Input.GetKey(KeyCode.C))
-        {
-            rotationDamping = control.rotateSpeed + 10;
-        }
+        
     }
 }
 

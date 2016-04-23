@@ -36,7 +36,7 @@ public class Controls : MonoBehaviour {
         }
         if (speed >= 25)
         {
-            speed = 24;
+            speed = 25;
         }
         else if (speed < 0)
         {
