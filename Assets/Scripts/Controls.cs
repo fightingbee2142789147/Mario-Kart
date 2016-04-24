@@ -29,7 +29,7 @@ public class Controls : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 3, Color.green, 120);
+        //Debug.DrawRay(transform.position, transform.forward * 3, Color.green, 120);
         RaycastHit Hit;
         if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.forward, out Hit, 1))
         {

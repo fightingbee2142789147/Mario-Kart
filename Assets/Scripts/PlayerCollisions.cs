@@ -49,7 +49,9 @@ public class PlayerCollisions : MonoBehaviour {
                 lapAudio[0].Play();
             } else if (LapNumber == 3)
             {
-                lapAudio[1].Play();
+
+                StartCoroutine(Lap3Audio());
+               
             }
             else if (LapNumber >= 3)
             {
@@ -64,9 +66,19 @@ public class PlayerCollisions : MonoBehaviour {
     IEnumerator endAudio()
     {
         
-        yield return new WaitForSeconds(2);
-        lapAudio[3].Stop();
+        yield return new WaitForSeconds(1.5f);
+        
         lapAudio[2].Play();
     }
-   
+    IEnumerator Lap3Audio()
+    {
+
+        
+        music.Stop();
+        lapAudio[1].Play();
+        yield return new WaitForSeconds(3f);
+        music.Play();
+        music.pitch = 1.03f;
+    }
+
 }

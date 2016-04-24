@@ -11,12 +11,13 @@ public class AIRacer : MonoBehaviour
     private float inputSteer = 0.0f;
     private float inputTorque = 0.0f;
     public Rigidbody rb;
-    Vector3 currentWaypointPos;
+    public Vector3 currentWaypointPos;
     public float speed = 0.1f;
     public NavMeshAgent navmesh;
     public int LapNumber = 0;
     public Countdown count;
     public float distanceTo;
+    public GameObject greenShell;
 
     void Start()
     {
@@ -28,6 +29,20 @@ public class AIRacer : MonoBehaviour
     }
     void Update()
     {
+
+        RaycastHit Hit;
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.right, out Hit, 4) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), -transform.right, out Hit, 4) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.forward, out Hit, 4))
+        {
+            if (Hit.collider.gameObject.tag == "Bounds")
+            {
+                currentWaypointPos = new Vector3(waypoints[currentWaypoint].position.x + Random.Range(-3, 3), waypoints[currentWaypoint].position.y, waypoints[currentWaypoint].position.z + Random.Range(-3, 3));
+            }
+            if (Hit.collider.gameObject.tag == "AI")
+            {
+                currentWaypointPos = new Vector3(waypoints[currentWaypoint].position.x + Random.Range(-3, 3), waypoints[currentWaypoint].position.y, waypoints[currentWaypoint].position.z + Random.Range(-3, 3));
+            }
+        }
+
         if (count.canStart == true)
         {
             navmesh.speed = 3.5f;
