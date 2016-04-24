@@ -66,7 +66,11 @@ public class TextScript : MonoBehaviour {
                     placement = 3;
                 }
             }
-        } else if (playerCol.LapNumber < ai1.LapNumber)
+        } else if (playerCol.LapNumber < ai1.LapNumber && playerCol.LapNumber > ai2.LapNumber)
+        {
+            placement = 2;
+        }
+        else if (playerCol.LapNumber > ai1.LapNumber && playerCol.LapNumber < ai2.LapNumber)
         {
             placement = 2;
         }
