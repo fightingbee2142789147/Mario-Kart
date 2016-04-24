@@ -32,9 +32,9 @@ public class AIRacer : MonoBehaviour
         {
             navmesh.speed = 3.5f;
             NavigateTowardsWaypoint();
-            if (speed >= 20)
+            if (speed >= 25)
             {
-                speed = 20;
+                speed = 25;
             }
             else if (speed < 0)
             {
@@ -70,6 +70,14 @@ public class AIRacer : MonoBehaviour
         speed += Time.deltaTime * 5;
         navmesh.SetDestination(currentWaypointPos);
         transform.position += transform.forward * speed * Time.deltaTime;
+    }
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Shell")
+        {
+            Destroy(col.gameObject);
+            speed = 0;
+        }
     }
     void OnTriggerEnter(Collider col)
     {
