@@ -7,17 +7,34 @@ public class PlayerCollisions : MonoBehaviour {
     public int LapNumber = 0;
     public AudioSource[] lapAudio;
     public AudioSource music;
+    public Rigidbody rb;
+    public Controls control;
 
-	// Use this for initialization
-	void Start () {
+
+    private static int WAYPOINT_VALUE = 100;
+    private static int LAP_VALUE = 10000;
+
+
+    // Use this for initialization
+    void Start () {
         lapAudio = GameObject.Find("Line").GetComponents<AudioSource>();
         music = GameObject.Find("MusicMachine").GetComponent<AudioSource>();
+        control = GameObject.Find("Player").GetComponent<Controls>();
+        rb = GetComponent<Rigidbody>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Bounds")
+        {
+          
+        }
+    }
     void OnTriggerEnter(Collider col)
     {
         if(col.gameObject.tag == "Finish")

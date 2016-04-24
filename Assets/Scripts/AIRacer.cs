@@ -16,12 +16,13 @@ public class AIRacer : MonoBehaviour
     public NavMeshAgent navmesh;
     public int LapNumber = 0;
     public Countdown count;
+    public float distanceTo;
 
     void Start()
     {
         GetWaypoints();
         rb = GetComponent<Rigidbody>();
-        currentWaypointPos = waypoints[currentWaypoint].position;
+        currentWaypointPos = new Vector3(waypoints[0].position.x + Random.Range(-5, 5), waypoints[0].position.y, waypoints[0].position.z + Random.Range(-5, 5));
         navmesh = GetComponent<NavMeshAgent>();
         count = GameObject.Find("CutsceneManager").GetComponent<Countdown>();
     }
@@ -45,6 +46,7 @@ public class AIRacer : MonoBehaviour
                 navmesh.SetDestination(waypoints[0].position);
                 currentWaypointPos = new Vector3(waypoints[0].position.x + Random.Range(-5, 5), waypoints[0].position.y, waypoints[0].position.z + Random.Range(-5, 5));
             }
+            distanceTo = Vector3.Distance(waypoints[currentWaypoint].position, transform.position);
         }
         else
         {

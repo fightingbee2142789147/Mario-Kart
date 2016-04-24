@@ -12,6 +12,7 @@ public class Controls : MonoBehaviour {
     public Countdown count;
     public GameObject Text1;
     public GameObject Text2;
+    public GameObject Text3;
 
 
     // Use this for initialization
@@ -29,6 +30,7 @@ public class Controls : MonoBehaviour {
             Movement();
             Text1.SetActive(true);
             Text2.SetActive(true);
+            Text3.SetActive(true);
         }
 
         if(pitchSpeed > 1.1f)

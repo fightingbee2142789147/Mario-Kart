@@ -9,12 +9,16 @@ public class PlayerRacer : MonoBehaviour {
     public List<Transform> waypoints;
     public int currentWaypoint = 0;
     Vector3 currentWaypointPos;
-   
+    public float distanceTravelled = 0;
+    Vector3 lastPosition;
+    public float distanceTo;
+
 
     void Start()
     {
         GetWaypoints();
         currentWaypointPos = waypoints[currentWaypoint].position;
+        lastPosition = transform.position;
     }
     void Update()
     {
@@ -22,7 +26,11 @@ public class PlayerRacer : MonoBehaviour {
         {
             currentWaypoint = 0;
         }
+        distanceTravelled += Vector3.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
+        distanceTo = Vector3.Distance(waypoints[currentWaypoint].position, transform.position);
     }
+    
     void GetWaypoints()
     {
         Transform[] potentialWaypoints = waypointContainer.GetComponentsInChildren<Transform>();
